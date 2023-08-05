@@ -7,7 +7,7 @@ pipeline
         {
             steps
             {
-                sh "git branch : 'master', url: 'https://github.com/shegde18/maven-project'"
+                git branch: 'master', url: 'https://github.com/shegde18/maven-project'
             }
         }
     }
