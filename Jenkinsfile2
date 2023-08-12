@@ -1,0 +1,36 @@
+pipeline
+{ 
+    agent any
+    stages
+    {
+        stage('execute print command')
+        {
+            steps
+            {
+                sh 'echo "This is a print statement"'
+            }
+        }
+
+        stage('Execute Unit Test and Component Test Parallelly')
+        {
+            parallel
+            {
+                stage('Execute Unit Test')
+                {
+                    steps
+                    {
+                        sh 'echo "Executing Unit test"'
+                    }
+                }
+
+                stage('Execute Component Test')
+                {
+                    steps
+                    {
+                        sh 'echo "Executing Component test"'
+                    }
+                }
+            }
+        }
+    }
+}
