@@ -1,0 +1,15 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('Multiple Commands executing in a stage')
+        {
+            steps
+            {
+                sh 'echo "printing Hi"'
+                sh 'echo "printing Bye"'
+            }
+        }
+    }
+}
