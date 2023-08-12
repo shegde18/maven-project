@@ -36,12 +36,15 @@ pipeline
             }
         }
 
-        // stage('Deploy the code')
-        // {
-        //     steps
-        //     {
-
-        //     }
-        // }
+        stage('Deploy the code')
+        {
+            steps
+            {
+                sshagent(['tomcatCICD']) 
+                {
+	                sh 'ssh -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@3.127.80.55:/usr/share/tomcat/webapps/'    
+                }
+            }
+        }
     }
 }
