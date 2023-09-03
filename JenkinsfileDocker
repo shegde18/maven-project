@@ -61,9 +61,9 @@ pipeline
                     def dockerrun = 'docker run -itd -p 8080:8080 --name tomcatcontainer shegde18/mytomcat:v1'
                 }
 
-                sshagent (credentials: ['jenkins-docker-deploy-to-ec2'])
+                sshagent (credentials: ['jenkins-docker-deploy-to-ec2-root-user'])
                 {
-	                sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.36.90 ${dockerrun}'
+	                sh 'ssh -o StrictHostKeyChecking=no root@172.31.36.90 ${dockerrun}'
                 }
             }
         }
