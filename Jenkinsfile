@@ -45,7 +45,7 @@ pipeline
         {
             steps
             {
-                withDockerRegistry(credentialsId: 'DockerHubCred', url: 'https://hub.docker.com/repository/docker/shegde18/') 
+                withDockerRegistry(credentialsId: 'DockerHubCred', url: 'https://index.docker.io/v1/') 
                 {
                     sh 'docker push shegde18/mytomcat9.0.80:latest'
                 }
