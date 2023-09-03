@@ -33,6 +33,14 @@ pipeline
             }
         }
 
+        stage('Docker Image Creation')
+        {
+            steps
+            {
+                sh 'docker build -t shegde18/mytomcat9.0.80:latest .'
+            }
+        }
+
         // stage('Deploy the code')
         // {
         //     steps
