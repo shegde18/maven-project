@@ -41,6 +41,17 @@ pipeline
             }
         }
 
+        stage('Copy Image to Docker Registry Hub')
+        {
+            steps
+            {
+                withDockerRegistry(credentialsId: 'DockerHubCred', url: 'https://hub.docker.com/repository/docker/shegde18/') 
+                {
+                    sh 'docker push shegde18/mytomcat9.0.80:latest'
+                }
+            }
+        }
+
         // stage('Deploy the code')
         // {
         //     steps
