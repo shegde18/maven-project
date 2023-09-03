@@ -4,4 +4,4 @@ LABEL Author: Sagar Hegde
 
 RUN apt-get update -y
 
-COPY /var/lib/jenkins/workspace/jenkins-docker-cicd/target/webapps.war /usr/local/tomcat/webapps/
+COPY /var/lib/jenkins/workspace/jenkins-docker-cicd/webapp/target/webapp.war /usr/local/tomcat/webapps/
