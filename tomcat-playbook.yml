@@ -33,6 +33,6 @@
 
     - name: copy artifacts
       copy:
-        src: /etc/ansible/playbooks/webapp.war
+        src: /etc/ansible/playbooks/
         dest: /opt/apache-tomcat-9.0.80/webapps/
       
