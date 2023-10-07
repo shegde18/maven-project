@@ -33,6 +33,15 @@ pipeline
             }
         }
 
+        stage('Copy the war file')
+        {
+            steps
+            {
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_master', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: false, execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//etc//ansible//playbooks//', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'webapp/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+            }
+            
+        }
+
         stage('Ansible CI-CD')
         {
             steps
