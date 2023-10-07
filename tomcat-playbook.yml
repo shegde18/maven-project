@@ -1,0 +1,31 @@
+- hosts: amazonweb
+  tasks:
+    - name: install jdk on node
+      yum:
+        name: java-1.8.0-openjdk
+        state: present
+
+    - name: download tomcat package or tar from official website
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz
+        dest: /app
+
+    - name: untar tomcat package
+      unarchive:
+        src: /app/apache-tomcat-9.0.80.tar.gz
+        dest: /app/
+        remote_src: true
+
+    - name: delete ".tar.gz" file after unarchive
+      file:
+        path: /app/apache-tomcat-9.0.80.tar.gz
+        state: absent
+
+    - name: start catalina service
+      command:
+        cmd: /app/apache-tomcat-9.0.80/bin/startup.sh
+
+    - name: download war files from jenkins
+      get_url:
+        url: https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.war
+        dest: /app/apache-tomcat-9.0.80/webapps/
